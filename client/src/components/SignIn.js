@@ -14,13 +14,13 @@ function SignIn() {
   console.log("In SignIn")
   
   const signInUser = (user) => {
-    
+    console.log("Busy sigining in USer...........")
     loginInfo.setAuth(1);
     loginInfo.setUser(user.username);
     localStorage.setItem('auth', 1);
     localStorage.setItem('user', user._id);
     localStorage.setItem('userDetails',JSON.stringify(user))
-  
+    console.log("LocalStorage updated")
    
   }
   const passwordKeyPressHandler = function (e) {
@@ -61,7 +61,7 @@ function SignIn() {
     return <Redirect to='/' />
 
   } 
-  if(loginInfo.auth==1) return <Redirect to='/' />
+  // if(loginInfo.auth==1) return <Redirect to='/' />
 
   return (
 

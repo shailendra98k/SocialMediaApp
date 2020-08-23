@@ -31,7 +31,6 @@ function Profile() {
             <Header/>
             Profile Page
 
-
         </React.Fragment>
     )
 }

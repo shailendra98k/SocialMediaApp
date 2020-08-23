@@ -2,6 +2,7 @@ import React from 'react'
 import home from '../assets/img/home.png'
 import chat from '../assets/img/chat.png'
 import addImage from '../assets/img/addImage.png'
+import Search from './Search'
 import notification from '../assets/img/notification.png'
 import {Redirect} from 'react-router-dom'
 import Avatar from 'react-avatar';
@@ -26,12 +27,16 @@ function Header() {
         
     }
 
+    const UserDetails=JSON.parse(localStorage.getItem('userDetails'));
+    const _id=UserDetails._id;
+
+    console.log( "UserDetail is: ", typeof(UserDetails));
     return (
         <React.Fragment>
             <div  style={{backgroundColor:'white',display:'flex', justifyContent:'center',padding:'10px', borderBottom:'1px solid lightgrey', position:'fixed', top:'0px', width:'100%'}}>
                 <div style={{backgroundColor:'white', display:'flex',justifyContent:'space-between',width:'70%'}}>
                     <div> <span style={{fontFamily:'cursive'}}>Fake Instagram </span> </div>
-                    <div > <input style={{width:'200px', height:'30px',color:'lightgrey', border:'1px solid lightgrey'}} placeholder='    Search' type='text'/> </div>
+                    <div > <Search/> </div>
                     <div >
                     
                         <a href='/'> <img src={home} />  </a> 
@@ -41,7 +46,7 @@ function Header() {
                         <Avatar name='shailendra'  round='20px'  size='40px' src='./upload/1590594824018.jpg' onClick={onClickHandler} />
                         
                         <ul id='dropdown-on-avatar' className='Visibility' style={{position:'absolute',right:'13%'}}> 
-                            <li className='dropdown-item' ><a href='/profile'>  My Profile</a></li>
+                            <li className='dropdown-item' ><a href={`/profile/${_id}`}>  My Profile</a></li>
                             <li  className='dropdown-item' ><a href='#' onClick={signOutUser} > Logout</a></li>
                         </ul>
 

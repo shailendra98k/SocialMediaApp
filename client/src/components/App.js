@@ -6,6 +6,7 @@ import SignUp from './SignUp'
 import SignIn from './SignIn'
 import Profile from './Profile'
 import AddImage from './AddImage'
+import Guest from './Guest';
 
 const axios = require('axios');
 export const loginInfoContext=React.createContext();
@@ -32,7 +33,6 @@ function App( )
 
   useEffect( ()=>{
     if(localStorage.getItem('user')!="") setUser(localStorage.getItem('user'));
-    
     console.log("Due to refresh ",refresh);
   });
   
@@ -45,14 +45,14 @@ function App( )
      <loginInfoContext.Provider value={loginInfo}>
          <Router>
             <Switch>
-
-            
                
                 <Route exact path="/"  render={()=> <Home  />  } />
                 {/* <Route exact path="/signIn" render={()=> <SignIn  /> }/>  */}
                 <Route exact path="/signIn" component={SignIn} /> 
                 <Route exact path="/signUp" render={()=> <SignUp /> }/>
-                {/* <Route exact path='/profile' render={()=>(auth?<Profile/>:<SignIn/> )} />}) } }  /> */}
+
+                {/* <Route path={`/profile/`}     render={ ()=>(auth? <Profile/> : <Guest/> ) }         /> */}
+                {/* <Route  path='/profile' render={()=>(auth?<Profile/>:<SignIn/> )} />}) } }  /> */}
                 <Route exact path='/addImage' render={()=><AddImage/>} />
               
             </Switch>

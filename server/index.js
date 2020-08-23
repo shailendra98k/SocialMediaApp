@@ -210,12 +210,30 @@ app.get('/delete/post/:id', function (req, res) {
 })
 
 app.get('/user/get', (req, res) => {
-
+   
     User.find().then((users) => {
         res.send(users);
     }).catch(err => { console.log("Error in fetchig users,", err) })
 
 })
+
+
+
+
+app.get( '/search/username/:username', function(req,res){
+   let username=req.params.username;
+   User.find( {'username':username}).exec((err,user)=>{
+       console.log("Found in search", user);
+        res.send(user);
+   } )
+
+} )
+
+
+
+
+
+
 
 
 

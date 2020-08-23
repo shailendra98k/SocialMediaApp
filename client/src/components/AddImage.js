@@ -11,11 +11,6 @@ const axios = require('axios')
 
 const image = document.getElementById('image');
 
-
-
-
-
-
 function AddImage() {
 
     const loginInfo = React.useContext(loginInfoContext);
